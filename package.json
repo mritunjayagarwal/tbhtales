@@ -1,0 +1,11 @@
+{
+  "name": "tbhtales",
+  "version": "1.0.0",
+  "description": "Web app to share your beautiful thoughts anonymously",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mritunjay Agarwal",
+  "license": "ISC"
+}
