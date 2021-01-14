@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tbh Tales | Home</title>
+    <link rel="icon" href="/img/logo.png">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script defer src="https://friconix.com/cdn/friconix-0.1765.js"> </script>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/skins/skin-green.css">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/AdminLTE.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/skins/skin-blue.css">
+    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <body class="hold-transition skin-black sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="wrapper">
+        
+          <%- include("./partials/header.ejs") %>
+          <%- include("./partials/sidebar.ejs") %>
+          
+            <div class="content-wrapper" style = "background: #0E0E10">
+                <% if(hasErrors){ %>
+                  <% _.forEach(errors, (error) => { %>
+                    <div class = "alert alert-danger text-center">
+                        <a href = "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
+                    <%= error %>
+                    </div>
+                  <% }) %>
+                <% } %>
+                <section class="content">
+                  <% if(tbhs.length != 0){ %>
+                    <div class = "row">
+                        <!-- <div class = "col-md-2">
+          
+                        </div> -->
+                        <div class = "col-md-8">
+                            <h3 class = "h5 text-center mb-3" style = "color: #d3d3d3">People's Response to you 🙈</h3>
+                          <div>
+                            <% _.forEach(tbhs, (tbh) => { %>  
+                              <a href="/news/show/">
+                                <div class="card mb-3" style = "background: #181818;border:none;border-left: 5px solid #007bff">
+                                  <div class="no-border text-uppercase px-3 pt-3" style = "color: #f3f3f3;font-size: 16px;font-family: Arial, Helvetica, sans-serif;font-weight: bold"><%= tbh.message %></div>
+                                  <span class = "pull-left no-border px-3 pb-0 mt-2" style = "color: #d3d3d3; font-weight: bolder; font-size: 12px;"><i class = "fa fa-clock"></i> <%= moment(tbh.created).format("MMMM Do YYYY") %></span>
+                                  <div class="card-body">
+      
+                                  <% if(user){ %>
+                                    <a href="/like/<%= user.username %>/" class="card-link" style = "color: #fff"><i class="fi-xwluxl-heart-solid" style = "color: red;font-size: 20px;margin-left: -5px;"></i> Share Response</a>
+                                  <% } %>
+                                  <span class = "pull-right" style = "color: #606060;margin-top: 5px;font-weight: bolder;"><%= moment(tbh.created).fromNow() %></span>
+                                  </div>
+                              </div>
+                              </a>
+                            <% }) %>
+                          </div>
+                          <div class = "row my-3">
+                              <div class = "mx-auto">
+                                <% if (pages > 0) { %>
+                                  <ul class="pagination text-center">
+                                      <% if (current == 1) { %>
+                                          <li class="disabled"><a class = "bg-primary pgbutton mr-1"  style = "color: #fff;padding: 5px;border-radius: 5px;">First</a></li>
+                                      <% } else { %>
+                                          <li><a href="/home/1" class = "bg-primary pgbutton mr-1" style = "color: #fff;padding: 5px;border-radius: 5px;">First</a></li>
+                                      <% } %>
+                                      <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                                      <% if (i !== 1) { %>
+                                          <li class="disabled"><a>...</a></li>
+                                      <% } %>
+                                      <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                                          <% if (i == current) { %>
+                                              <li class="active"><a class = "bg-primary pgbutton px-2 mr-2"  style = "color: #fff;padding: 5px;border-radius: 5px;"><%= i %></a></li>
+                                          <% } else { %>
+                                              <li><a href="/home/<%= i %>" class = "bg-primary pgbutton px-2 mr-2"  style = "color: #fff;padding: 5px;border-radius: 5px;"><%= i %></a></li>
+                                          <% } %>
+                                          <% if (i == Number(current) + 4 && i < pages) { %>
+                                              <li class="disabled"><a>...</a></li>
+                                          <% } %>
+                                      <% } %>
+                                      <% if (current == pages) { %>
+                                          <li class="disabled"><a class = "bg-primary pgbutton"  style = "color: #fff;padding: 5px;border-radius: 5px;">Last</a></li>
+                                      <% } else { %>
+                                          <li><a href="/home/<%= pages %>" class = "bg-primary pgbutton"  style = "color: #fff;padding: 5px;border-radius: 5px;">Last</a></li>
+                                      <% } %>
+                                  </ul>
+                              <% } %>
+                            </div>
+                          </div>
+                            
+                        </div>
+                        <div class = "col-md-4">
+                        </div>
+                        <% }else{ %>
+                          <h3 class = "h5 text-center" style = "color: #d3d3d3;margin-top: 50px;opacity: 0.8">Put this link on your bio and status to get responses ❤️</h3>
+                            <h3 class = "h5 text-center" style = "color: #d3d3d3;margin-top:30px;">http://tbhtales.herokuapp.com/<%= user.username %></h3>
+                        <% } %>
+
+                    </div>
+                  <%- include ("./partials/modals.ejs") %>
+                </section>
+              </div>
+        </div>
+</body>
+</html>

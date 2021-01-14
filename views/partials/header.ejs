@@ -1,0 +1,66 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo" style = "background: #007bff;color: #fff">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>TBHT</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">TBH TALES</span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" style = "height: 51px;">
+        <!-- Sidebar toggle button-->
+        <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button" style = "margin-top:-12px;">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <!-- Centered List -->
+        <!-- <ul class="nav navbar-nav mx-auto">
+          <li class="nav-item"  style = "color: #d3d3d3;;margin-top: -12px;margin-left: -40px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Latest News</li>
+        </ul> -->
+        <ul class="nav navbar-nav mr-auto">
+          <li class="nav-item"  style = "color: #d3d3d3;;margin-top: -12px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">SIT BACK AND READ <i class = "fa fa-coffee"></i></li>
+        </ul>
+        <ul class = "list-inline active">
+          <% if(user) { %>
+            <li class="list-inline-item">
+              <div class="dropdown dropleft">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="avatar" id="dropdownMenuButton" data-toggle="dropdown" style = "width: 30px;height:auto;">
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href = "/user/<%= user._id %>">View profile</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                  </div>
+                </div>
+          </li>
+          <% }else{ %>
+            <li class = "list-inline-item" style = "margin-left: 5px;">
+                <span style = "color: #d3d3d3;;margin-top: -12px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" id="dropdownMenu"><a href="/member/signup/">Signup</a></strong>
+            </li> 
+          <% } %>  
+        </ul>
+        <!-- if user
+          <ul class = "list-inline active pb-2">
+            <li class = "list-inline-item" style = "margin-left: 5px;">
+                <div class="dropdown dropleft">
+                  <span style = "font-size: 25px;" id="dropdownMenu"><strong id = "wallet">user.username</strong>
+                  </div>
+              </li>   
+          </ul>
+         else
+          <ul class = "list-inline active pb-2">
+            <li class = "list-inline-item" style = "margin-left: 5px;">
+                <div class="dropdown dropleft">
+                  <span style = "font-size: 25px;" id="dropdownMenu"  data-toggle="modal" data-target="#myModal"><strong id = "wallet">Login</strong>
+                  </div>
+              </li>  
+              <li class = "list-inline-item">
+                <div class="dropdown dropleft">
+                  <span style = "font-size: 25px;" id="dropdownMenu" data-toggle="modal" data-target="#SignupModal"><strong id = "wallet">Signup</strong>
+                  </div>
+            </li> 
+          </ul>
+         -->
+    </nav>
+</header>

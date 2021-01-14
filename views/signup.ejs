@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tbh Tales| Welcome</title>
+    <link rel="icon" href="img/logo.png">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script defer src="https://friconix.com/cdn/friconix-0.1765.js"> </script>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/authenticate.css">
+</head>
+<body>
+    <div class="container-fluid"style = "background: #0E0E10">
+        <div class="row no-gutter">
+          <!-- <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+             <h2 class = "text-center" style = "color: transparent;font-weight: bolder">An Anonymous Network</h2>
+             <div class="h-100 row align-items-center">
+              <div class="col" style="background:#005ea1">
+                <h2 style = "color: #fff;font-weight: bolder">An Anonymous Network</h2>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-md-12 col-lg-12">
+            <% if(hasErrors){ %>
+              <% _.forEach(errors, (error) => { %>
+                <div class = "alert alert-danger text-center">
+                    <a href = "#" class = "close" data-dismiss = "alert" aria-label="close">&times;</a>
+                <%= error %>
+                </div>
+              <% }) %>
+            <% } %>
+            <!-- <h3 class="login-heading text-center" style = "font-weight: bold;color: #D3D3D3;font-size: 40px;">GLA NETWORK</h3> -->
+            <div class="login d-flex align-items-center py-5">
+              <div class="container">
+                <div><img src="/img/logo.png" style = "width: 150px;height:auto;display:block;margin:auto;margin-bottom: 30px;margin-top: -30px"></div>
+                <div class="row" style = "margin-bottom: 100px;">
+                  <div class="col-md-6 col-lg-6 mx-auto">
+                    <h3 class="login-heading mb-4 text-center" style = "color: #fff">Welcome back!</h3>
+                    <form action = "/create" method = "POST">
+                      <div class="form-label-group">
+                        <input type="text" id="inputEmail" name = "username" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputEmail">username</label>
+                      </div>
+      
+                      <div class="form-label-group">
+                        <input type="password" name = "password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <label for="inputPassword">password</label>
+                      </div>
+
+                      <!-- <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                        <label class="custom-control-label" for="customCheck1" style = "color: #d3d3d3;">I've read and agreed to the</label> <a data-toggle="modal" data-target="#modalPoll-1" title="Click to read terms">terms and conditions</a>
+                      </div> -->
+
+                      <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Create Account</button>
+                      <div class="text-center">
+                        <a class="small" href="/authenticate" style = "font-size: 17px;color: #ddd">Already a member? Login</a></div>
+                    </form>
+                  </div>
+                </div>
+                <h3 class="login-heading mt-4 text-center" style = "color: #e3e3e3">FOR THE STUDENTS<br>BY THE STUDENTS</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal: modalPoll -->
+        <div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true" data-backdrop="false">
+          <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+            <div class="modal-content">
+              <!--Header-->
+              <div class="modal-header bg-danger">
+                <h3 class="login-heading text-center" style = "font-weight: bold; color: #fff">POINTS TO REMEMBER</h3>
+        
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">×</span>
+                </button>
+              </div>
+        
+              <!--Body-->
+              <div class="modal-body">
+                <div class="text-center">
+                  <i class="fa fa-camera fa-4x mb-3 animated rotateIn"></i>
+                  <p class="text-center">
+                    <strong>Your rating</strong>
+                  </p>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
+                  <label class="form-check-label" for="radio-179">Very good</label>
+                </div>
+        
+                <div class="form-check mb-4">
+                  <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
+                  <label class="form-check-label" for="radio-279">Good</label>
+                </div>
+        
+                <div class="form-check mb-4">
+                  <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
+                  <label class="form-check-label" for="radio-379">Mediocre</label>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
+                  <label class="form-check-label" for="radio-479">Bad</label>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
+                  <label class="form-check-label" for="radio-579">Very bad</label>
+                </div>
+              </div>
+        
+              <!--Footer-->
+              <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary">AGREE</a>
+                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal ends Here-->
+      </div>
+</body>
+</html>
