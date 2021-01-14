@@ -16,7 +16,7 @@ module.exports = function(User, Tbh, passport, moment){
             if(req.user){
                 res.redirect('/home/1')
             }else{
-                res.redirect('/create')
+                res.redirect('/create/account')
             }
         },
         create: function(req, res){
