@@ -70,15 +70,19 @@ module.exports = function(User, Tbh, passport, moment){
             }
         },
         tbh: async function(req, res){
-           var ranks = await User.find().limit(10).sort('-tlength').exec();
-           User.findOne({ username: req.params.username}).exec((err, user) => {
-               if(user){
-                var errors = req.flash('error')
-                res.render('tbh',  {user: req.user, vuser: user, errors: errors, hasErrors: errors.length > 0, ranks: ranks});
-               }else{
-                   res.send("Fk off")
-               }
-           })
+           if(req.params.username == req.user.username){
+                res.redirect('back');
+           }else{
+                var ranks = await User.find().limit(10).sort('-tlength').exec();
+                User.findOne({ username: req.params.username}).exec((err, user) => {
+                    if(user){
+                    var errors = req.flash('error')
+                    res.render('tbh',  {user: req.user, vuser: user, errors: errors, hasErrors: errors.length > 0, ranks: ranks});
+                    }else{
+                        res.redirect('/')
+                    }
+                })
+           }
         },
         sendmessage: function(req, res){
             const newtbh = new Tbh();

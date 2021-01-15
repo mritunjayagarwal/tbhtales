@@ -4,11 +4,15 @@
         <!-- search form -->
         <ul class="sidebar-menu">
            <% if(user){ %>
-            <li><a href="/whoweare"><img class="mr-2 rounded-circle" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="" style = "width: 20px;height: auto;"><span style = "color: #fff;"><%= user.username %></span>  <span class = "badge badge-primary badge-pill pull-right"><%= user.tlength %></span></a></li>
+            <li><a><img class="mr-2 rounded-circle" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="" style = "width: 20px;height: auto;"><span style = "color: #fff;"><%= user.username %></span>  <span class = "badge badge-primary badge-pill pull-right"><%= user.tlength %></span></a></li>
            <% } %>
            <li class="header mt-2 text-center text-uppercase" style = "color: #d3d3d3;font-size: 15px;background: #303030">TBH Leaderboard</li>
            <% _.forEach(ranks, (rank) => { %>
-               <li><a href="/user/<%= rank._id %>" style = "color: #fff"><img class="mr-2 rounded-circle" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="" style = "width: 20px;height: auto;"><span><%= rank.username %></span> <span class = "badge badge-primary badge-pill pull-right"> <%= rank.tlength %></span></a></li>
+               <% if(rank.username == user.username){ %>
+                <li><a style = "color: #fff"><img class="mr-2 rounded-circle" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="" style = "width: 20px;height: auto;"><span><%= rank.username %></span> <span class = "badge badge-primary badge-pill pull-right"> <%= rank.tlength %></span></a></li>
+               <% }else{ %>
+                <li><a href="/tbh/<%= rank.username %>" style = "color: #fff"><img class="mr-2 rounded-circle" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="" style = "width: 20px;height: auto;"><span><%= rank.username %></span> <span class = "badge badge-primary badge-pill pull-right"> <%= rank.tlength %></span></a></li>
+               <% } %>
            <% }) %>
         </ul>
     </section>
