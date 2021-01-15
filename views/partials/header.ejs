@@ -10,7 +10,7 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" style = "height: 51px;">
         <!-- Sidebar toggle button-->
-        <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button" style = "margin-top:-12px;">
+        <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button" style = "margin-top:-12px;color: #d3d3d3">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -21,7 +21,7 @@
           <li class="nav-item"  style = "color: #d3d3d3;;margin-top: -12px;margin-left: -40px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Latest News</li>
         </ul> -->
         <ul class="nav navbar-nav mr-auto">
-          <li class="nav-item"  style = "color: #d3d3d3;;margin-top: -12px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">SIT BACK AND READ <i class = "fa fa-coffee"></i></li>
+          <li class="nav-item"  style = "color: #d3d3d3;;margin-top: -12px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><i class = "fa fa-home"></i></li>
         </ul>
         <ul class = "list-inline active">
           <% if(user) { %>
@@ -29,14 +29,13 @@
               <div class="dropdown dropleft">
                         <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="avatar" id="dropdownMenuButton" data-toggle="dropdown" style = "width: 30px;height:auto;">
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href = "/user/<%= user._id %>">View profile</a>
                     <a class="dropdown-item" href="/logout">Logout</a>
                   </div>
                 </div>
           </li>
           <% }else{ %>
             <li class = "list-inline-item" style = "margin-left: 5px;">
-                <span style = "color: #d3d3d3;;margin-top: -12px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" id="dropdownMenu"><a href="/member/signup/">Signup</a></strong>
+                <span style = "margin-top: -12px;font-weight: bold;font-size: 18px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" id="dropdownMenu"><a href="/create/account" style = "color: #d3d3d3">Signup</a></strong>
             </li> 
           <% } %>  
         </ul>

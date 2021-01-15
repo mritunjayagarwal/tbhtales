@@ -6,6 +6,7 @@ module.exports = function(User, Tbh, passport, moment){
             router.get('/home', this.directhome);
             router.get('/create/account', this.create);
             router.get('/home/:page', this.home);
+            router.get('/success', this.success);
             router.post('/create', this.createAccount);
             router.get('/authenticate', this.authenticate);
             router.get('/logout', this.logout);
@@ -57,21 +58,23 @@ module.exports = function(User, Tbh, passport, moment){
                 var perPage = 8;
                 var page = req.params.page || 1;
                 var errors = req.flash('error');
+                var ranks = await User.find().limit(20).sort('-tlength').exec();
             
                 Tbh.find({owner: req.user._id}).skip((perPage * page) - perPage).limit(perPage).sort("created").exec((err, tbhs) => {
                     Tbh.countDocuments().exec((err, count) => {
-                        res.render('home', { user: req.user, errors: errors, hasErrors: errors.length > 0, tbhs: tbhs,  current: page,pages: Math.ceil(count / perPage), moment: moment});
+                        res.render('home', { user: req.user, errors: errors, hasErrors: errors.length > 0, tbhs: tbhs,  current: page,pages: Math.ceil(count / perPage), moment: moment, ranks: ranks});
                     })
                 });
             }else{
                 res.redirect('/authenticate');
             }
         },
-        tbh: function(req, res){
+        tbh: async function(req, res){
+           var ranks = await User.find().limit(10).sort('-tlength').exec();
            User.findOne({ username: req.params.username}).exec((err, user) => {
                if(user){
                 var errors = req.flash('error')
-                res.render('tbh',  {user: req.user, vuser: user, errors: errors, hasErrors: errors.length > 0});
+                res.render('tbh',  {user: req.user, vuser: user, errors: errors, hasErrors: errors.length > 0, ranks: ranks});
                }else{
                    res.send("Fk off")
                }
@@ -89,11 +92,19 @@ module.exports = function(User, Tbh, passport, moment){
             }, {
                 $push: {
                     tbhs: { tbh: newtbh._id}
+                },
+                $inc: {
+                    tlength: +1
                 }
             }, (err) => {
                 if(err) console.log(err);
             })
-            res.redirect('back');
+            res.redirect('/success');
+        },
+        success: async function(req, res){
+            var errors = req.flash('error')
+            var ranks = await User.find().limit(20).sort('-tlength').exec();
+            res.render('success', { user: req.user, ranks: ranks, errors: errors, hasErrors: errors.length > 0});
         }
     }
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta property="og:image" content= "https://i.stack.imgur.com/xJida.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tbh Tales | Home</title>
     <link rel="icon" href="/img/logo.png">
@@ -49,14 +50,13 @@
                             <h3 class = "h5 text-center mb-3" style = "color: #d3d3d3">People's Response to you 🙈</h3>
                           <div>
                             <% _.forEach(tbhs, (tbh) => { %>  
-                              <a href="/news/show/">
                                 <div class="card mb-3" style = "background: #181818;border:none;border-left: 5px solid #007bff">
                                   <div class="no-border text-uppercase px-3 pt-3" style = "color: #f3f3f3;font-size: 16px;font-family: Arial, Helvetica, sans-serif;font-weight: bold"><%= tbh.message %></div>
                                   <span class = "pull-left no-border px-3 pb-0 mt-2" style = "color: #d3d3d3; font-weight: bolder; font-size: 12px;"><i class = "fa fa-clock"></i> <%= moment(tbh.created).format("MMMM Do YYYY") %></span>
                                   <div class="card-body">
       
                                   <% if(user){ %>
-                                    <a href="/like/<%= user.username %>/" class="card-link" style = "color: #fff"><i class="fi-xwluxl-heart-solid" style = "color: red;font-size: 20px;margin-left: -5px;"></i> Share Response</a>
+                                    <span class="card-link" onclick="myalert()" style = "color: #fff;cursor:pointer"><i class="fi-xwluxl-heart-solid" style = "color: red;font-size: 20px;margin-left: -5px;"></i> Share Response</span>
                                   <% } %>
                                   <span class = "pull-right" style = "color: #606060;margin-top: 5px;font-weight: bolder;"><%= moment(tbh.created).fromNow() %></span>
                                   </div>
@@ -102,7 +102,7 @@
                         </div>
                         <% }else{ %>
                           <h3 class = "h5 text-center" style = "color: #d3d3d3;margin-top: 50px;opacity: 0.8">Put this link on your bio and status to get responses ❤️</h3>
-                            <h3 class = "h5 text-center" style = "color: #d3d3d3;margin-top:30px;">http://tbhtales.herokuapp.com/<%= user.username %></h3>
+                            <h3 class = "h5 text-center" style = "color: #d3d3d3;margin-top:30px;font-size: 14px;">http://tbhtales.herokuapp.com/tbh/<%= user.username %></h3>
                         <% } %>
 
                     </div>
@@ -111,4 +111,9 @@
               </div>
         </div>
 </body>
+<script>
+  function myalert(){
+    alert("Take a screenshot and share it on Instagram and Whatsapp 😎")
+  }
+</script>
 </html>
