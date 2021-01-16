@@ -44,7 +44,7 @@
                     <h3 class="login-heading mb-4 text-center" style = "color: #fff">Welcome back!</h3>
                     <form action = "/login" method = "POST">
                       <div class="form-label-group">
-                        <input type="text" id="inputEmail" name = "username" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="text" id="inputEmail" name = "username" class="form-control" placeholder="Email address" onkeypress="return AvoidSpace(event)" required autofocus>
                         <label for="inputEmail">username</label>
                       </div>
       
@@ -126,4 +126,10 @@
         <!-- modal ends Here-->
       </div>
 </body>
+<script>
+  function AvoidSpace(event) {
+    var k = event ? event.which : window.event.keyCode;
+    if (k == 32) return false;
+    }
+</script>
 </html>
